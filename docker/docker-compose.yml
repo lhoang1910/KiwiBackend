@@ -16,6 +16,18 @@ services:
     networks:
       - kiwi_networks
 
+  redis:
+    container_name: redis_kiwi
+    build:
+      context: ./redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/app
+    networks:
+      - kiwi_networks
+
   mysql:
     container_name: kiwidb
     build: 
