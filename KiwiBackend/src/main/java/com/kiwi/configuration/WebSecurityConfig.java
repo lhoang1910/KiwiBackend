@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.kiwi.entities.ERole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -78,7 +79,9 @@ public class WebSecurityConfig {
 	          .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 	          .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 	          .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-	          .antMatchers("/**").permitAll()
+				  .antMatchers("/api/category/enabled").permitAll()
+				  .antMatchers("/api/product/**").permitAll()
+				  .antMatchers("/api/admin/**").hasRole("ADMIN")
 	          .anyRequest().authenticated();
 	      
 	      http.authenticationProvider(authenticationProvider());

@@ -34,28 +34,6 @@ public class ProductController {
 	@Autowired
 	ProductRedisService productRedisService;
 
-	//Them, sua, Xoa
-	@PostMapping("/create")
-	public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest request) throws JsonProcessingException {
-		Product product = productService.createProduct(request);
-		productRedisService.clear(); // Xóa cache toàn bộ
-		return ResponseEntity.ok(product);
-	}
-
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody CreateProductRequest request) throws JsonProcessingException {
-		Product product = productService.updateProduct(id, request);
-		productRedisService.clear(); // Xóa cache toàn bộ
-		return ResponseEntity.ok(product);
-	}
-
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteProduct(@PathVariable long id) throws JsonProcessingException {
-		productService.deleteProduct(id);
-		productRedisService.clear(); // Xóa cache toàn bộ
-		return ResponseEntity.ok(new MessageResponse("Product is deleted"));
-	}
-
 	//hien thi
 	@GetMapping("/")
 	@Operation(summary = "Lấy ra danh sách sản phẩm")

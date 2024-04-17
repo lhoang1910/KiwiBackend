@@ -7,6 +7,8 @@ networks:
 services:
   kiwi_backend:
     container_name: kiwi_backend
+    environment:
+      - TZ=UTC
     build: 
       context: ../KiwiBackend
     ports:
@@ -18,6 +20,8 @@ services:
 
   redis:
     container_name: redis_kiwi
+    environment:
+      - TZ=UTC
     build:
       context: ./redis
     restart: always
@@ -30,6 +34,7 @@ services:
 
   mysql:
     container_name: kiwidb
+    
     build: 
       context: ./mysql
     ports:
@@ -38,6 +43,7 @@ services:
       - kiwi_networks
     environment:
       - MYSQL_ROOT_PASSWORD=123456
+      - TZ=UTC
     
 
 # docker compose -p kiwi_backend up -d

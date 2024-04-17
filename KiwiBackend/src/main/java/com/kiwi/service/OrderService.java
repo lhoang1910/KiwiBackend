@@ -5,8 +5,10 @@ import java.util.List;
 import com.kiwi.dto.request.CreateOrderRequest;
 import com.kiwi.entities.Order;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface OrderService {
-	void placeOrder(CreateOrderRequest request);
+	String placeOrder(CreateOrderRequest request, HttpServletRequest r);
 
 	List<Order> getList();
 

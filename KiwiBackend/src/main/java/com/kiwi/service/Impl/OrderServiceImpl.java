@@ -17,6 +17,8 @@ import com.kiwi.repository.OrderRepository;
 import com.kiwi.repository.UserRepository;
 import com.kiwi.service.OrderService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -29,8 +31,11 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	UserRepository userRepository;
 
-	@Override
-	public void placeOrder(CreateOrderRequest request) {
+	@Autowired
+	VNPayService vnPayService;
+
+    @Override
+	public String placeOrder(CreateOrderRequest request, HttpServletRequest r) {
 		// TODO Auto-generated method stub
 		User user = userRepository.findByUsername(request.getUsername())
 				.orElseThrow(() -> new NotFoundException("Not Found User With Username:" + request.getUsername()));
@@ -56,9 +61,16 @@ public class OrderServiceImpl implements OrderService {
 			orderDetailRepository.save(orderDetail);
 
 		}
+//		System.out.println(totalPrice);
 		order.setTotalPrice(totalPrice);
 		order.setUser(user);
 		orderRepository.save(order);
+
+		String orderInfo = "Thanh toán đơn hàng: ";
+		String returnUrl = r.getRequestURL().toString();
+
+		String paymentUrl = vnPayService.createOrder((int) totalPrice, orderInfo, returnUrl);
+		return paymentUrl;
 	}
 
 	@Override
