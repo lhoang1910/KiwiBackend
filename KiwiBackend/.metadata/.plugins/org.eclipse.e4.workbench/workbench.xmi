@@ -52,10 +52,6 @@
           <tags>persp.newWizSC:org.eclipse.m2e.core.wizards.Maven2ProjectWizard</tags>
           <tags>persp.newWizSC:org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard</tags>
           <tags>persp.newWizSC:org.eclipse.wst.jsdt.ui.NewJSWizard</tags>
-          <tags>persp.editorOnboardingText:Open a file or drop files here to open them.</tags>
-          <tags>persp.editorOnboardingCommand:Find Actions$$$Ctrl+3</tags>
-          <tags>persp.editorOnboardingCommand:Show Key Assist$$$Shift+Ctrl+L</tags>
-          <tags>persp.editorOnboardingCommand:New$$$Ctrl+N</tags>
           <tags>persp.perspSC:org.eclipse.debug.ui.DebugPerspective</tags>
           <tags>persp.perspSC:org.eclipse.jdt.ui.JavaPerspective</tags>
           <tags>persp.perspSC:org.eclipse.ui.resourcePerspective</tags>
@@ -86,6 +82,10 @@
           <tags>persp.newWizSC:org.eclipse.jst.jsp.ui.internal.wizard.NewJSPWizard</tags>
           <tags>persp.newWizSC:org.eclipse.jpt.jpa.ui.wizard.newJpaProject</tags>
           <tags>persp.perspSC:org.eclipse.jpt.ui.jpaPerspective</tags>
+          <tags>persp.editorOnboardingText:Open a file or drop files here to open them.</tags>
+          <tags>persp.editorOnboardingCommand:Find Actions$$$Ctrl+3</tags>
+          <tags>persp.editorOnboardingCommand:Show Key Assist$$$Shift+Ctrl+L</tags>
+          <tags>persp.editorOnboardingCommand:New$$$Ctrl+N</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_hp3NwPo6Ee6fGepvpDsYTA" selectedElement="_hp3Nzfo6Ee6fGepvpDsYTA" horizontal="true">
             <children xsi:type="basic:PartStack" xmi:id="_hp3Nwfo6Ee6fGepvpDsYTA" elementId="topLeft" toBeRendered="false" containerData="2000">
               <children xsi:type="advanced:Placeholder" xmi:id="_hp3Nwvo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.navigator.ProjectExplorer" toBeRendered="false" ref="_hjfgAPo6Ee6fGepvpDsYTA" closeable="true">
@@ -136,8 +136,8 @@
             <children xsi:type="basic:PartSashContainer" xmi:id="_hp3Nzfo6Ee6fGepvpDsYTA" containerData="8000" selectedElement="_hp3N1Po6Ee6fGepvpDsYTA">
               <children xsi:type="basic:PartSashContainer" xmi:id="_hp3Nzvo6Ee6fGepvpDsYTA" containerData="8000" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_hp3Nz_o6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.editorss" containerData="8000" ref="_hjWWEPo6Ee6fGepvpDsYTA"/>
-                <children xsi:type="basic:PartStack" xmi:id="_hp3N0Po6Ee6fGepvpDsYTA" elementId="topRight" containerData="2000" selectedElement="_hp3N0fo6Ee6fGepvpDsYTA">
-                  <children xsi:type="advanced:Placeholder" xmi:id="_hp3N0fo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.views.ContentOutline" ref="_hpxHIPo6Ee6fGepvpDsYTA" closeable="true">
+                <children xsi:type="basic:PartStack" xmi:id="_hp3N0Po6Ee6fGepvpDsYTA" elementId="topRight" toBeRendered="false" containerData="2000">
+                  <children xsi:type="advanced:Placeholder" xmi:id="_hp3N0fo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.views.ContentOutline" toBeRendered="false" ref="_hpxHIPo6Ee6fGepvpDsYTA" closeable="true">
                     <tags>View</tags>
                     <tags>categoryTag:General</tags>
                   </children>
@@ -442,7 +442,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfH9YPo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_hfPSIPo6Ee6fGepvpDsYTA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_g74Gnfo6Ee6fGepvpDsYTA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eELt8PuiEe6Ac8He-uCfLQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_g74Gnfo6Ee6fGepvpDsYTA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfIkcPo6Ee6fGepvpDsYTA" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -450,8 +450,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfIkcvo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_hfQgQPo6Ee6fGepvpDsYTA" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_g7x_xvo6Ee6fGepvpDsYTA"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_hfRuYPo6Ee6fGepvpDsYTA" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_g70cAPo6Ee6fGepvpDsYTA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eERNgPuiEe6Ac8He-uCfLQ" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.png" tooltip="Undo" enabled="false" command="_g7x_xvo6Ee6fGepvpDsYTA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eESboPuiEe6Ac8He-uCfLQ" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.png" tooltip="Redo" enabled="false" command="_g70cAPo6Ee6fGepvpDsYTA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfIkc_o6Ee6fGepvpDsYTA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -478,7 +478,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfJLgvo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_hfS8gPo6Ee6fGepvpDsYTA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_g73fc_o6Ee6fGepvpDsYTA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_eEgeEPuiEe6Ac8He-uCfLQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_g73fc_o6Ee6fGepvpDsYTA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_hfJykPo6Ee6fGepvpDsYTA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

@@ -2,6 +2,8 @@ package com.kiwi.controller;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.kiwi.service.ProductRedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,37 +31,40 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
-//Them, sua, Xoa
-	@PostMapping("/create")
-	@Operation(summary = "Tạo mới sản phẩm")
-	public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest request) {
-		Product product = productService.createProduct(request);
+	@Autowired
+	ProductRedisService productRedisService;
 
+	//Them, sua, Xoa
+	@PostMapping("/create")
+	public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest request) throws JsonProcessingException {
+		Product product = productService.createProduct(request);
+		productRedisService.clear(); // Xóa cache toàn bộ
 		return ResponseEntity.ok(product);
 	}
 
 	@PutMapping("/update/{id}")
-	@Operation(summary = "Tìm sản phẩm bằng id và cập nhật sản phẩm đó")
-	public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody CreateProductRequest request) {
+	public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody CreateProductRequest request) throws JsonProcessingException {
 		Product product = productService.updateProduct(id, request);
-
+		productRedisService.clear(); // Xóa cache toàn bộ
 		return ResponseEntity.ok(product);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	@Operation(summary = "Xóa sản phẩm bằng id")
-	public ResponseEntity<?> deleteProduct(@PathVariable long id) {
+	public ResponseEntity<?> deleteProduct(@PathVariable long id) throws JsonProcessingException {
 		productService.deleteProduct(id);
-
-		return ResponseEntity.ok(new MessageResponse("Product is delete"));
+		productRedisService.clear(); // Xóa cache toàn bộ
+		return ResponseEntity.ok(new MessageResponse("Product is deleted"));
 	}
 
-//hien thi
+	//hien thi
 	@GetMapping("/")
 	@Operation(summary = "Lấy ra danh sách sản phẩm")
-	public ResponseEntity<List<Product>> getList() {
-		List<Product> list = productService.getList();
-
+	public ResponseEntity<List<Product>> getList() throws JsonProcessingException {
+		List<Product> list = productRedisService.getAllProducts(null, null);
+		if (list == null) {
+			list = productService.getList();
+			productRedisService.saveAllProducts(list, null, null);
+		}
 		return ResponseEntity.ok(list);
 	}
 
@@ -72,9 +77,12 @@ public class ProductController {
 	}
 
 	@GetMapping("/search")
-	@Operation(summary = "Tìm kiếm sản phẩm bằng keyword")
-	public ResponseEntity<List<Product>> searchProduct(@RequestParam("keyword") String keyword) {
-		List<Product> list = productService.searchProduct(keyword);
+	public ResponseEntity<List<Product>> searchProduct(@RequestParam("keyword") String keyword) throws JsonProcessingException {
+		List<Product> list = productRedisService.getAllProducts(keyword, null);
+		if (list == null) {
+			list = productService.searchProduct(keyword);
+			productRedisService.saveAllProducts(list, keyword, null);
+		}
 		return ResponseEntity.ok(list);
 	}
 
