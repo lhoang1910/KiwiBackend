@@ -32,17 +32,17 @@ services:
     networks:
       - kiwi_networks
 
-  mysql:
+  postgresql:
     container_name: kiwidb
-    
     build: 
-      context: ./mysql
+      context: ./postgresql
     ports:
-      - "3306:3306"
+      - "5432:5432"
     networks:
       - kiwi_networks
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123456  
       - TZ=UTC
     
 
